@@ -1,0 +1,11 @@
+<h1>WareHouse App</h1>
+<h3>Boas vindas a lista de fornecedores</h3>
+
+<h2>Fornecedores Cadastrados</h2>
+<% @suppliers.each do |sup| %>
+  <p><%=link_to(sup.ficname, supplier_path(sup.id))%></p>
+  <%= sup.tel %>
+ <div id="<%=sup.cnpj%>"><% if user_signed_in? %> <%= link_to 'Editar', edit_supplier_path(sup) %>
+ <%end%></div>
+  <p><strong>________________________</strong></p>
+<% end %>

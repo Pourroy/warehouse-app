@@ -1,0 +1,8 @@
+<h1>WareHouse App</h1>
+<h3> Estas são todas as categorias registradas </h3>
+
+<h2>Categorias de Produtos</h2>
+<% @categories.each do |c| %>
+  <p><%=link_to(c.name, category_path(c.id))%></p>
+  <p><strong>________________________</strong></p>
+<% end %>

@@ -1,0 +1,10 @@
+<h1><%= @product_bundle.name %></h1>
+
+Código SKU: <%=@product_bundle.sku%>
+
+<h2> Esses são os produtos do seu Kit</h2>
+
+<%= @product_bundle.product_models.each do |p| %>
+  <%= p.name%>
+<%end%>
+<%= link_to 'Voltar', root_path %>

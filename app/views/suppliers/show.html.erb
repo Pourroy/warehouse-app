@@ -1,0 +1,31 @@
+<h1><%= @supplier.ficname %></h1>
+<h2><%= @supplier.namesoc %></h2>
+<dl>
+  <dt>CNPJ:</dt>
+  <dd> <%=@supplier.cnpj%> </dd>
+  <dt>Endereço:</dt>
+  <dd> <%=@supplier.address%> <dd>
+  <dt>Email:</dt>
+  <dd> <%=@supplier.email%> </dd>
+  <dt>Telefone:</dt>
+  <dd> <%=@supplier.tel%> </dd>
+</dl>
+<h3>Produtos deste fornecedor:</h3>
+<table>
+<tr>
+<th>Produto</th>
+<th>SKU</th>
+</tr>
+<% @supplier.product_models.each do |p|%>
+  
+  <tr>
+  <div  id="<%=p.sku%>"><td><%= p.name%></td>
+  <td><%= p.sku%></td>
+  <% if user_signed_in? %>
+  <td><%= link_to 'Editar', edit_product_model_path(p) %></td>
+  <%end%></div>
+  </tr>
+  <%end%>
+</table>
+
+<%= link_to 'Voltar', root_path %>

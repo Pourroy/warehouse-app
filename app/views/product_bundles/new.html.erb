@@ -1,0 +1,21 @@
+<h1>Novo kit de produtos</h1>
+<% if @product_bundle.errors.any? %>
+  <span>Verifique os campos abaixo:</span>
+  <ul>
+  <% @product_bundle.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @product_bundle) do |f|%>
+  <div>
+  <%= f.label :name, "Nome" %>
+  <%= f.text_field :name%>
+  </div>
+  <div> 
+    <h2>Escolha os produtos do seu KIT</h2> 
+  <%= f.collection_check_boxes :product_model_ids, ProductModel.all, :id, :name%>
+  </div>
+  <%= f.submit 'Gravar'%>
+  <% end %>

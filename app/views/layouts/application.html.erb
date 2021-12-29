@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WarehouseApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <style>
+  .right {
+  float: right;
+}
+  body {
+    background-color: grey;
+  }
+  header {
+    background-color: darkgrey;
+    border-width: 15px;
+    border-style: outset;
+    border-color: #363636;
+    }
+    selector {
+      text-align: center;
+    }
+  </style>
+    <header>
+      <nav>
+        <%= link_to 'Início', root_path %> -
+        
+        <%= link_to 'Lista de fornecedores cadastrados', suppliers_path %> -
+        <%= link_to 'Ver categorias de produtos', categories_path%> -
+        <% if user_signed_in? %>
+        <%= link_to 'Cadastrar novo fornecedor', new_supplier_path%> -
+        <%= link_to 'Cadastrar novo galpão', new_warehouse_path %> -
+        <%= link_to 'Cadastrar modelo de produto', new_product_model_path %> -
+        <%= link_to 'Criar novo kit de produtos', new_product_bundle_path %> - 
+        <%= link_to 'Cadastrar categoria de produtos', new_category_path%> -
+         <p>Olá, <%= current_user.email%></p>
+         <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+        <%else%>
+         <%= link_to 'Logar', new_user_session_path %>
+        <%end%>
+      </nav>
+    </header>
+    <main>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

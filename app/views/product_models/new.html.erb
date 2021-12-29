@@ -1,0 +1,42 @@
+<% if @product_model.errors.any? %>
+  <span>Verifique os campos abaixo:</span>
+  <ul>
+  <% @product_model.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+<h1>Cadastrar Modelo de Produto</h1>
+
+<%= form_with(model: ProductModel.new) do |form|%>
+  <div>
+    <%= form.label :name, 'Nome' %>
+    <%= form.text_field(:name) %>
+  </div>
+  <div>
+    <%= form.label :weight, 'Peso' %>
+    <%= form.text_field(:weight) %>
+  </div>
+  <div>
+    <%= form.label :height, 'Altura' %>
+    <%= form.text_field(:height) %>
+  </div>
+  <div>
+    <%= form.label :width, 'Largura' %>
+    <%= form.text_field(:width) %>
+  </div>
+  <div>
+    <%= form.label :length, 'Profundidade' %>
+    <%= form.text_field(:length) %>
+  </div>  
+  <div>
+    <%= form.label :supplier_id, 'Fornecedor' %>
+    <%= form.collection_select(:supplier_id, Supplier.all, :id, :ficname ) %>
+  </div>
+  <div>
+  <%= form.label :category_id, 'Categoria do Produto' %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name ) %>
+    </div>
+
+  <%= form.submit 'Gravar' %>
+<%end%>

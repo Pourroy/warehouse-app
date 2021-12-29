@@ -1,0 +1,13 @@
+<h1><%= @product_model.name %></h1>
+<h2>Fornecedor: <%=@product_model.supplier.ficname%></h2>
+<dl>
+<dt>Peso:</dt>
+<dd><%=@product_model.weight%> gramas</dd>
+<dt>Dimensões: </dt>
+<dd><%=@product_model.dimensions%></dd><%#metodo dimensions foi criado em product_model na pasta models%>
+<dt>Código SKU: </dt>
+<dd><%=@product_model.sku%></dd>
+<dt>Categoria: </dt>
+<dd><%=@product_model.category.name%></dd>
+</dl>
+<%= link_to 'Voltar', root_path %>

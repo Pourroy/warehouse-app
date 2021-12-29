@@ -1,0 +1,18 @@
+<% if @category.errors.any? %>
+  <span>Verifique os campos abaixo:</span>
+  <ul>
+  <% @category.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+<h1>Cadastrar Categoria</h1>
+
+<%= form_with(model: @category) do |form|%> 
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field(:name) %>
+  </div>
+   <%= form.submit 'Gravar' %>
+  <%end%>
+  

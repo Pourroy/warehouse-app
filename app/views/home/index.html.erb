@@ -1,0 +1,12 @@
+
+<h1>WareHouse App</h1>
+<h3>Boas vindas ao sistema de gestão de estoques</h3>
+
+<h2>Galpões Cadastrados</h2>
+<% @warehouses.each do |w| %>
+ <div id='<%=w.code%>'> <%= link_to(w.nome, warehouse_path(w.id))%>
+  <%= w.code %>
+  <% if user_signed_in? %><%= link_to 'Editar', edit_warehouse_path(w) %>
+  <%end%></div>
+<% end %>
+

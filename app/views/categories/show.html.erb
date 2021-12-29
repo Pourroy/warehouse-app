@@ -1,0 +1,13 @@
+<h1><%= @category.name %></h1>
+
+<% @category.product_models.each do |p|%>
+  <tr>
+  <td><%= p.name%></td>
+  <td><%= p.sku%></td>
+  <% if user_signed_in? %><td><button><%= link_to 'Editar', edit_product_model_path(p) %></button></td>
+  <%end%>
+  </tr>
+  <%end%>
+</table>
+
+<%= link_to 'Voltar', root_path %>
