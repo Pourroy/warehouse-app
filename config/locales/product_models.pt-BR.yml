@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      product_model: Modelo de Produto
+    attributes:
+      product_model:
+        name: 'Nome'
+        sku: 'Código SKU'
+        supplier_id: 'Fornecedor'
+        category_id: 'Categoria do Produto'

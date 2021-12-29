@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      supplier: Fornecedor
+    attributes:
+      supplier:
+        namesoc: "Razão Social"
+        ficname: "Nome Fantasia"
