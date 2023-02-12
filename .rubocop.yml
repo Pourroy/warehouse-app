@@ -1,8 +1,8 @@
-require:
+require: 
   - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.0.3
   NewCops: enable
   SuggestExtensions: false
   CacheRootDirectory: ./tmp/rubocop/

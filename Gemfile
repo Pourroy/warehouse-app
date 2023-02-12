@@ -10,6 +10,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+gem 'rubocop'
 gem 'devise'
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -17,6 +18,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
   gem 'capybara'
+  gem 'rubocop-rails'
   gem "nyan-cat-formatter"
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 5.0'
