@@ -1,33 +1,24 @@
 # README
 
-## Sobre o Projeto
+This is a warehouse management and registration application. Making it possible to manage not only the warehouses in your database, but also all products, suppliers and product orders from different categories.
 
-Este é um projeto que eu vou detalhar depois
-
-## API
-
-### Galpões
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
+* Ruby 3.0.3
 
 * System dependencies
 
-* Configuration
+* To Run:
 
-* Database creation
+`bundle install` - Install dependencies
 
-* Database initialization
+`bundle exec rails webpacker:install` - Install webpacker to support javascript and CSS of the front-end
 
-* How to run the test suite
+`rails s` - Run the application to access in localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+`rspec` - Run front-end, back-end and unitary tests spec
 
-* Deployment instructions
+`rails db:create` - Create the Data Base
 
-* ...
+`rails db:migrate` - Create Database Tables
+
+`rails db:seed` - Populate our Data Base with necessary data
+
