@@ -2,14 +2,12 @@ require 'rails_helper'
 
 describe 'Usuárior cadastra um galpão' do
   it 'visitante não vê o menu' do
-
     visit root_path
-
-    expect(page).not_to have_link "Cadastrar novo galpão"
+    click_on 'Cadastrar novo galpão'
+    expect(current_path).to eq new_user_session_path
   end
 
   it 'visitante não acessa diretamente o formulário' do
-
     visit new_warehouse_path
 
     expect(current_path).to eq new_user_session_path
@@ -17,15 +15,14 @@ describe 'Usuárior cadastra um galpão' do
 
   it 'através de um link na tela inicial' do
     # Arrange
-    User.create!(email: 'ruaao@email.com', password: '12345678')
+    User.create!(email: 'ruaaao@email.com', password: '12345678')
     visit root_path
-    click_on 'Logar'
+    click_on 'Entrar'
     within('form#new_user') do
-      fill_in 'E-mail', with: 'ruaao@email.com'
+      fill_in 'E-mail', with: 'ruaaao@email.com'
       fill_in 'Senha', with: '12345678'
       click_on 'Entrar'
     end
-    
     click_on 'Cadastrar novo galpão'
 
     # Assert
@@ -44,11 +41,11 @@ describe 'Usuárior cadastra um galpão' do
 
   it 'com sucesso' do
     # Arrange
-    User.create!(email: 'ruaao@email.com', password: '12345678')
+    User.create!(email: 'ruaaao@email.com', password: '12345678')
     visit root_path
-    click_on 'Logar'
+    click_on 'Entrar'
     within('form#new_user') do
-      fill_in 'E-mail', with: 'ruaao@email.com'
+      fill_in 'E-mail', with: 'ruaaao@email.com'
       fill_in 'Senha', with: '12345678'
       click_on 'Entrar'
     end
@@ -64,7 +61,6 @@ describe 'Usuárior cadastra um galpão' do
     fill_in 'Área Total', with: '5000'
     fill_in 'Área Útil', with: '3000'
     click_on 'Gravar'
-
     # Assert
     expect(page).to have_content('Juiz de Fora')
     expect(page).to have_content('JDF')
@@ -79,11 +75,11 @@ describe 'Usuárior cadastra um galpão' do
 
   it 'e todos campos são obrigatórios' do
     # Arrange
-    User.create!(email: 'ruaao@email.com', password: '12345678')
+    User.create!(email: 'ruaaao@email.com', password: '12345678')
     visit root_path
-    click_on 'Logar'
+    click_on 'Entrar'
     within('form#new_user') do
-      fill_in 'E-mail', with: 'ruaao@email.com'
+      fill_in 'E-mail', with: 'ruaaao@email.com'
       fill_in 'Senha', with: '12345678'
       click_on 'Entrar'
     end
@@ -97,8 +93,8 @@ describe 'Usuárior cadastra um galpão' do
     # Assert
     expect(page).not_to have_content 'Galpão registrado com sucesso'
     expect(page).to have_content 'Não foi possível gravar o galpão'
-    expect(page).to have_content "Nome não pode ficar em branco"
-    expect(page).to have_content "Código não pode ficar em branco"
-    expect(page).to have_content "CEP não pode ficar em branco"
+    expect(page).to have_content 'Nome não pode ficar em branco'
+    expect(page).to have_content 'Código não pode ficar em branco'
+    expect(page).to have_content 'CEP não pode ficar em branco'
   end
 end

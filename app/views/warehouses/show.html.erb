@@ -1,16 +1,51 @@
-<h1><%= @warehouse.nome %></h1>
+<h1><%= @warehouse.name %></h1>
 <h2><%= @warehouse.code %></h2>
 <dl>
   <dt>Descrição</dt>
   <dd><%= @warehouse.description %></dd>
   <dt>Endereço</dt>
-  <dd><%= @warehouse.adress %> - <%= @warehouse.city %>/<%= @warehouse.state %></dd>
+  <dd><%= @warehouse.address %> - <%= @warehouse.city %>/<%= @warehouse.state %></dd>
   <dt>CEP:</dt>
   <dd><%= @warehouse.postal_code %></dd>
   <dt>Área Total:</dt>
   <dd><%= @warehouse.total_area %> m2</dd>
   <dt>Área Útil:</dt>
   <dd><%= @warehouse.useful_area %> m2</dd>
+  <dt> Categorias de Produtos do Galpão: </dt>
+  <% @warehouse.categories.each do |w| %>
+  <dd><%= w.name%></dd>
+<%end%>
 </dl>
+
+<h2> ESTOQUE </h2>
+
+<% @items = @warehouse.product_items.group(:product_model).count %> <%#pegue todos os product itens, group por product_model e count quantos product models%>
+                                                                    <%# assim ele criou um array de hashes, e podemos usar o each pra percorrer esse array
+                                                                    pair-eando product_models e quantity obtida pelo count e armazenada no hashe pelo group%>
+                                                                    
+<% @items.each_pair do |product_model, quantity|%>                  <%# forma de imprimir o produto uma unica vez indicando a quantidade dele%>
+
+  <div id="product-<%=product_model.id%>">
+    <%= product_model.name %>
+    Quantidade: <%= quantity %>
+  </div>
+
+<% end %>
+<% if user_signed_in? %>
+  <h2>Entrada de Itens</h2>
+<%= form_with(url: product_entry_warehouse_path(@warehouse.id)) do |f| %>
+  <div>
+    <%= f.label :quantity, 'Quantidade' %>
+    <%= f.number_field :quantity %>
+  </div>
+  <div>
+    <%= f.label :product_model_id, 'Produto' %>
+    <%= f.collection_select :product_model_id, @product_models, :id, :name %>
+  </div>
+  <div>
+    <%= f.submit 'Confirmar' %>
+  </div>
+<% end %>
+<%end%>
 
 <%= link_to 'Voltar', root_path %>

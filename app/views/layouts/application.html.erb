@@ -5,52 +5,66 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/3.10.1/stylesheets/locastyle.css">
   </head>
-
   <body>
-  <style>
-  .right {
-  float: right;
-}
-  body {
-    background-color: grey;
-  }
-  header {
-    background-color: darkgrey;
-    border-width: 15px;
-    border-style: outset;
-    border-color: #363636;
-    }
-    selector {
-      text-align: center;
-    }
-  </style>
-    <header>
-      <nav>
-        <%= link_to 'Início', root_path %> -
-        
-        <%= link_to 'Lista de fornecedores cadastrados', suppliers_path %> -
-        <%= link_to 'Ver categorias de produtos', categories_path%> -
-        <% if user_signed_in? %>
-        <%= link_to 'Cadastrar novo fornecedor', new_supplier_path%> -
-        <%= link_to 'Cadastrar novo galpão', new_warehouse_path %> -
-        <%= link_to 'Cadastrar modelo de produto', new_product_model_path %> -
-        <%= link_to 'Criar novo kit de produtos', new_product_bundle_path %> - 
-        <%= link_to 'Cadastrar categoria de produtos', new_category_path%> -
-         <p>Olá, <%= current_user.email%></p>
-         <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-        <%else%>
-         <%= link_to 'Logar', new_user_session_path %>
-        <%end%>
-      </nav>
+    <header class="ls-topbar">
+    <div><h1><strong>//</strong> WarehouseApp <strong>//</strong></h1></div>
+    <div>
+      <% if user_signed_in? %>
+        <h4 class="ls-ico-user"> Olá <%= current_user.email %></h4>
+        <%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "ls-btn-primary ls-btn-xs"  %>
+      <% else %>
+          <%= link_to 'Entrar', new_user_session_path, method: :get, class: "ls-btn-primary"  %>
+      <% end %>
+    </div>
     </header>
     <main>
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
+      <p><%= flash[:notice] %></p>
+      <p><%= flash[:alert] %></p>
       <%= yield %>
     </main>
+
+    <aside class="ls-sidebar">
+      <div class="ls-sidebar-inner">
+        <nav class="ls-menu">
+          <ul>
+          <li class=<%= current_page?(root_path) ? "ls-active" : "" %>>
+            <%= link_to 'Início', root_path, class:"ls-ico-home"%> 
+          </li>
+          <li class=<%= current_page?(suppliers_path) ? "ls-active" : "" %>>
+            <%= link_to 'Lista de fornecedores cadastrados', suppliers_path, class:"ls-ico-user" %>
+          </li>
+          <li class=<%= current_page?(categories_path) ? "ls-active" : "" %>>
+            <%= link_to 'Ver categorias de produtos', categories_path%>
+          </li>
+          <li class=<%= current_page?(product_models_path) ? "ls-active" : "" %>>
+            <%= link_to 'Lista de Modelos de Produto', product_models_path, class: "ls-ico-table-alt"  %>
+          </li>
+          <li class=<%= current_page?(new_category_path) ? "ls-active" : "" %>>
+            <%= link_to 'Cadastrar categoria de produtos', new_category_path%>
+          </li>
+          <li class=<%= current_page?(new_supplier_path) ? "ls-active" : "" %>>
+            <%= link_to 'Cadastrar novo fornecedor', new_supplier_path%>
+          </li>
+          <li class=<%= current_page?(new_warehouse_path) ? "ls-active" : "" %>>
+            <%= link_to 'Cadastrar novo galpão', new_warehouse_path %> 
+          </li>
+          <li class=<%= current_page?(new_product_model_path) ? "ls-active" : "" %>>
+            <%= link_to 'Cadastrar modelo de produto', new_product_model_path, class: "ls-ico-table-alt"  %>
+          </li>
+          <li class=<%= current_page?(new_product_bundle_path) ? "ls-active" : "" %>>
+            <%= link_to 'Criar novo kit de produtos', new_product_bundle_path, class: "ls-ico-table-alt"  %>
+          </li>
+          <li class=<%= current_page?(product_items_entry_path) ? "ls-active" : "" %>>
+            <%= link_to 'Entrada de Estoque', product_items_entry_path, class: "ls-ico-table-alt"  %>
+          </li>
+            </ul>
+    <footer>
+      <script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+      <script src="//assets.locaweb.com.br/locastyle/3.10.1/javascripts/locastyle.js"></script>
+    </footer>
   </body>
 </html>

@@ -1,5 +1,6 @@
 <h1>Editando Galpão</h1>
 <% if @warehouse.errors.any? %>
+<h2>Não foi possível editar o GALPÃO</h2><br>
   <span>Verifique os campos abaixo:</span>
   <ul>
   <% @warehouse.errors.full_messages.each do |msg| %>
@@ -10,8 +11,8 @@
 
 <%= form_with(model: @warehouse) do |form| %>
   <div>
-    <%= form.label :nome, 'Nome' %>
-    <%= form.text_field(:nome) %>
+    <%= form.label :name, 'Nome' %>
+    <%= form.text_field(:name) %>
   </div>
   <div>
     <%= form.label :code, 'Código' %>
@@ -22,8 +23,8 @@
     <%= form.text_area(:description) %>
   </div>
   <div>
-    <%= form.label :adress, 'Endereço' %>
-    <%= form.text_field(:adress) %>
+    <%= form.label :address, 'Endereço' %>
+    <%= form.text_field(:address) %>
   </div>
   <div>
     <%= form.label :city, 'Cidade' %>
@@ -45,5 +46,9 @@
     <%= form.label :useful_area, 'Área Útil' %>
     <%= form.number_field(:useful_area) %>
   </div>
-  <%= form.submit 'Gravar' %>
+  <h2>Escolha as categorias de produtos armazenáveis</h2> 
+  <%= form.collection_check_boxes :category_ids, Category.all, :id, :name%>
+  </div>
+ <div> <%= form.submit 'Gravar' %> </div>
+  
 <% end %>

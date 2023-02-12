@@ -1,5 +1,6 @@
 <h1>Editar Modelo de Produto</h1>
 <% if @product_model.errors.any? %>
+<h2>Não foi possível editar o MODELO DE PRODUTO</h2> <br>
   <span>Verifique os campos abaixo:</span>
   <ul>
   <% @product_model.errors.full_messages.each do |msg| %>

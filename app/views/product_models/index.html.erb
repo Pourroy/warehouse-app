@@ -1,0 +1,20 @@
+<h1>Lista de Modelos de produtos</h1>
+<table>
+<tr>
+<th>Produto</th>
+<th>SKU</th>
+</tr>
+<% @product_models.each do |pm| %>
+<tr>
+ <div id='<%=pm.sku%>'> 
+ <td><%= link_to(pm.name, product_model_path(pm.id))%></td>
+  <td><%= pm.sku %></td>
+  <% if user_signed_in? %>
+  <td><%= link_to 'Editar', edit_product_model_path(pm) %></td>
+  <td><%= button_to 'Delete', product_model_path(pm.id), method: :delete %></td>
+  </tr>
+  </div>
+  <%end%>
+<% end %>
+</table>
+<%=link_to 'Voltar', root_path%>

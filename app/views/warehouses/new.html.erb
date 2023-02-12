@@ -10,8 +10,8 @@
 
 <%= form_with(model: @warehouse) do |form| %>
   <div>
-    <%= form.label :nome %>
-    <%= form.text_field(:nome) %>
+    <%= form.label :name %>
+    <%= form.text_field(:name) %>
   </div>
   <div>
     <%= form.label :code %>
@@ -22,8 +22,8 @@
     <%= form.text_area(:description) %>
   </div>
   <div>
-    <%= form.label :adress %>
-    <%= form.text_field(:adress) %>
+    <%= form.label :address %>
+    <%= form.text_field(:address) %>
   </div>
   <div>
     <%= form.label :city %>
@@ -45,5 +45,8 @@
     <%= form.label :useful_area %>
     <%= form.number_field(:useful_area) %>
   </div>
-  <%= form.submit 'Gravar' %>
+  <h2>Escolha as categorias de produtos armazenáveis</h2> 
+  <%= form.collection_check_boxes :category_ids, Category.all, :id, :name%>
+  </div>
+ <div> <%= form.submit 'Gravar' %> </div>
 <% end %>

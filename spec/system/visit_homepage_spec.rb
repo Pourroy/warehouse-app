@@ -4,10 +4,8 @@ describe 'Visitante abre a tela inicial' do
   # Cenários
   it 'e vê uma mensagem de boas vindas' do
     # Arrange
-
     # Act
     visit root_path
-
     # Assert
     expect(page).to have_css('h1', text: 'WareHouse App')
     expect(page).to have_css('h3', text: 'Boas vindas ao sistema de gestão de estoques')
@@ -16,10 +14,10 @@ describe 'Visitante abre a tela inicial' do
   it 'e vê os galpões cadastrados' do
     # 3 As
     # Arrange => Preparar
-    Warehouse.new(nome: 'Guarulhos', code: 'GRU', postal_code: '00000-000').save()
-    Warehouse.new(nome: 'Porto Alegre', code: 'POA', postal_code: '00000-000').save()
-    Warehouse.new(nome: 'São Luís', code: 'SLZ', postal_code: '00000-000').save()
-    Warehouse.new(nome: 'Vitória', code: 'VIX', postal_code: '00000-000').save()
+    Warehouse.new(name: 'Guarulhos', code: 'GRU', postal_code: '00000-000').save
+    Warehouse.new(name: 'Porto Alegre', code: 'POA', postal_code: '00000-000').save
+    Warehouse.new(name: 'São Luís', code: 'SLZ', postal_code: '00000-000').save
+    Warehouse.new(name: 'Vitória', code: 'VIX', postal_code: '00000-000').save
     # Act => Agir ou Executar
     visit root_path
 
@@ -37,10 +35,10 @@ describe 'Visitante abre a tela inicial' do
 
   it 'e não vê todos detalhes do galpão' do
     # Arrange
-    Warehouse.create(nome: 'Maceió', code: 'MCZ', description: 'Ótimo galpão numa linda cidade',
-                     adress: 'Av Fernandes Lima', city: 'Maceió', state: 'AL',
+    Warehouse.create(name: 'Maceió', code: 'MCZ', description: 'Ótimo galpão numa linda cidade',
+                     address: 'Av Fernandes Lima', city: 'Maceió', state: 'AL',
                      postal_code: '57050-000',
-                     total_area: 10000, useful_area: 8000)
+                     total_area: 10_000, useful_area: 8000)
 
     # Act
     visit root_path

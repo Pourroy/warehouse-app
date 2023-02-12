@@ -1,0 +1,18 @@
+<h1> Registrar Entrada de Lote</h1>
+
+<%= form_with(url: product_items_entry_path) do |f| %>
+  <div>
+    <%= f.label :quantity, 'Quantidade' %>
+    <%= f.number_field :quantity %>
+  </div>
+  <div>
+    <%= f.label :warehouse_id, 'Galpão Destino' %>
+    <%= f.select :warehouse_id, options_from_collection_for_select(@warehouses, :id, :code) %> <%# select um pouco mais trabalhoso %>
+  </div>                                                                                       <%# @warehouses substitui Warehouses.all devido a declaração dele no controller new_entry%>
+  <div>
+    <%= f.label :product_model_id, 'Produto' %>
+    <%= f.collection_select :product_model_id, @product_models, :id, :name %> <%# mesma função, mais fácil de escrever%>
+  <div>
+    <%= f.submit 'Confirmar' %>
+  </div>
+<% end %>

@@ -3,6 +3,6 @@
 
 <h2>Categorias de Produtos</h2>
 <% @categories.each do |c| %>
-  <p><%=link_to(c.name, category_path(c.id))%></p>
+  <p><%=link_to(c.name, category_path(c.id))%> <%= button_to 'Delete', category_path(c.id), method: :delete%> </p>
   <p><strong>________________________</strong></p>
 <% end %>

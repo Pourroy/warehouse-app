@@ -4,7 +4,8 @@ Código SKU: <%=@product_bundle.sku%>
 
 <h2> Esses são os produtos do seu Kit</h2>
 
-<%= @product_bundle.product_models.each do |p| %>
-  <%= p.name%>
+<% @product_bundle.product_models.each do |p| %>
+  <div><%= link_to(p.name, product_model_path(p.id))%></div>
 <%end%>
-<%= link_to 'Voltar', root_path %>
+<br>
+<div><%= link_to 'Voltar', root_path %></div>

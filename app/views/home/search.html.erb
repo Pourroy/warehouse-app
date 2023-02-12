@@ -1,0 +1,8 @@
+<h1>Resultados da busca</h1>
+<ul>
+  <% @waresearch.each do |ws| %>
+  <div> <%= link_to(ws.name, warehouse_path(ws.id))%>, <%= ws.code %> </div>
+  <% end %>
+  <br>
+  <%= link_to 'Voltar', root_path%>
+</ul>
