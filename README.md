@@ -5,6 +5,10 @@ This is a warehouse management and registration application. Making it possible 
 * Ruby 3.0.3
 
 * System dependencies
+- ruby 3.0.3
+- rails lasted
+- yarn 1.22.19 || >
+- node 10.19 || >
 
 * To Run:
 
